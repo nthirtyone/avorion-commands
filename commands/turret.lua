@@ -28,7 +28,7 @@ function execute(sender, commandName, w, r, t, m, a, n, ...) -- weapontype, rari
 		local tech = math.max(1, tonumber(t) or 6)
 		local amount = math.max(1, tonumber(a) or 1)
 		local dps = Balancing_TechWeaponDPS(tech)
-		local material = Material(tonumber(m) or 2)
+		local material = Material(math.min(math.max(0, tonumber(m) or 1), 6))
 		local o = GenerateTurretTemplate(random():createSeed(), weapon, dps, tech, rarity, material)
 		player:sendChatMessage("Server", 0, "You have been given (a) weapon(s).")
 		for i=1,amount do
@@ -43,5 +43,5 @@ function getDescription()
 end
 
 function getHelp()
-	return "Gives generic turret to a player. Usage: /turret <type> [rarity=0] [tech=6] [material=2] [amount=1] [player]"
+	return "Gives generic turret to a player. Usage: /turret <type> [rarity=0] [tech=6] [material=1] [amount=1] [player]"
 end
