@@ -1,7 +1,5 @@
 function execute(sender, commandName, ...)
-	local player = Player(sender)
-   	player:addScriptOnce("sethome.lua")
-   	player:sendChatMessage("Server", 0, "Home sector has been set to current sector.")
+   	Player(sender):addScriptOnce("cmd/sethome.lua")
     return 0, "", ""
 end
 
