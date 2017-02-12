@@ -15,4 +15,6 @@ Modifies inventory of a player. Usage:
 ## /price
 Prints price of currently boarded ship. Usage: `/price`
 ## /sethome
-Sets players home in current sector. Usage: `/sethome`
+Allows player to change home sector to current if friendly or own station is present. Usage: `/sethome`
+## /whereis
+Gets the position of a player. Usage: `/whereis <name>`
