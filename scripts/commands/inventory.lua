@@ -2,6 +2,11 @@ package.path = package.path .. ";data/scripts/lib/?.lua"
 
 require "randomext"
 require "galaxy"
+require "cmd.common"
+weapons = require "cmd.weapons"
+rarities = require "cmd.rarities"
+materials = require "cmd.materials"
+scripts = require "cmd.upgrades"
 
 -- Main function of the command, called by game when command is used.
 function execute(sender, commandName, action, ...) -- weapontype, rarity, tech, material, amount, name
@@ -13,14 +18,7 @@ function execute(sender, commandName, action, ...) -- weapontype, rarity, tech, 
 			flag, msg = addTurrets(player, ...)
 		elseif action == "upgrade" then
 			flag, msg = addUpgrades(player, ...)
-		elseif action == "available" then
-			local option = ...
-			if option:find("upgrades?") then flag, msg = printAvailable(scripts)
-			elseif option:find("turrets?") then flag, msg = printAvailable(weapons)
-			elseif option:find("materials?") then flag, msg = printAvailable(materials)
-			elseif option:find("rarity") or option:find("rarities") then flag, msg = printAvailable(rarities)
-			else flag, msg = false, string.format("Unknown available option: %s", option) end
-		elseif action == "help" then
+		elseif action == "help" or action == nil then
 			flag, msg = true, getHelp()
 		else
 			flag, msg = false, string.format("Unknown action: %s", action)
@@ -67,71 +65,6 @@ function addUpgrades(faction, script, rarity, amount)
 	end
 	return false, err
 end
--- Returns available properties from a selected table.
-function printAvailable(table)
-	local str = "Available:"
-	for _,item in ipairs(table) do
-		str = str .. "\n" .. item[3]
-	end
-	return true, str
-end
-
--- Types tables.
-weapons = 
-{
-	{function (str) return str:find("^[cC]ha") end,  0, "ChainGun"},
-	{function (str) return str:find("^[lL]as") end,  1, "Laser"},
-	{function (str) return str:find("^[mM]in") end,  2, "MiningLaser"},
-	{function (str) return str:find("^[pP]la") end,  3, "PlasmaGun"},
-	{function (str) return str:find("^[rR]oc") end,  4, "RocketLauncher"},
-	{function (str) return str:find("^[cC]an") end,  5, "Cannon"},
-	{function (str) return str:find("^[rR]ai") end,  6, "RailGun"},
-	{function (str) return str:find("^[rR]ep") end,  7, "RepairBeam"},
-	{function (str) return str:find("^[bB]ol") end,  8, "Bolter"},
-	{function (str) return str:find("^[lL]ig") end,  9, "LightningGun"},
-	{function (str) return str:find("^[tT]es") end, 10, "TeslaGun"},
-	{function (str) return str:find("^[fF]or") end, 11, "ForceGun"},
-	{function (str) return str:find("^[sS]al") end, 12, "SalvagingLaser"},
-}
-rarities =
-{
-	{function (str) return str:find("^[pP]ur")  or str:find("^[lL]eg") end, 5, "Legendary"},
-	{function (str) return str:find("^[rR]ed")  or str:find("^[eE]xo") end, 4, "Exotic"},
-	{function (str) return str:find("^[yY]el")  or str:find("^[eE]xc") end, 3, "Exceptional"},
-	{function (str) return str:find("^[bB]lu")  or str:find("^[rR]ar") end, 2, "Rare"},
-	{function (str) return str:find("^[gG]ree") or str:find("^[uU]nc") end, 1, "Uncommon"},
-	{function (str) return str:find("^[wW]hi")  or str:find("^[cC]om") end, 0, "Common"},
-	{function (str) return str:find("^[gG]r[ae]y") or str:find("^[pP]et") end, -1, "Petty"},
-}
-materials =
-{
-	{function (str) return str:find("^[aA]vo") end, 6, "Avorion"},
-	{function (str) return str:find("^[oO]go") end, 5, "Ogonite"},
-	{function (str) return str:find("^[xX]an") end, 4, "Xanion"},
-	{function (str) return str:find("^[tT]ri") end, 3, "Trinium"},
-	{function (str) return str:find("^[nN]ao") end, 2, "Naonite"},
-	{function (str) return str:find("^[tT]it") end, 1, "Titanium"},
-	{function (str) return str:find("^[iI]ro") end, 0, "Iron"},
-}
-scripts = 
-{
-	{function (str) return str:find("^arb") or str:find("^atcs") end, "arbitrarytcs", "arbitrarytcs"},
-	{function (str) return str:find("^bat") end, "batterybooster", "batterybooster"},
-	{function (str) return str:find("^car") end, "cargoextension", "cargoextension"},
-	{function (str) return str:find("^civ") or str:find("^ctcs") end, "civiltcs", "civiltcs"},
-	{function (str) return str:find("^energyb") end, "energybooster", "energybooster"},
-	{function (str) return str:find("^eng") end, "enginebooster", "enginebooster"},
-	{function (str) return str:find("^hyp") end, "hyperspacebooster", "hyperspacebooster"},
-	{function (str) return str:find("^mil") or str:find("^mtcs") end, "militarytcs", "militarytcs"},
-	{function (str) return str:find("^min") end, "miningsystem", "miningsystem"},
-	{function (str) return str:find("^rad") end, "radarbooster", "radarbooster"},
-	{function (str) return str:find("^sca") end, "scannerbooster", "scannerbooster"},
-	{function (str) return str:find("^shi") end, "shieldbooster", "shieldbooster"},
-	{function (str) return str:find("^tra") end, "tradingoverview", "tradingoverview"},
-	{function (str) return str:find("^vel") end, "velocitybypass", "velocitybypass"},
-	{function (str) return str:find("^energyt") end, "energytoshieldconverter", "energytoshieldconverter"},
-	{function (str) return str:find("^val") end, "valuablesdetector", "valuablesdetector"},
-}
 
 -- Add amount of items to the inventory of a faction (or player).
 function addItems(faction, item, amount)
@@ -148,7 +81,7 @@ function getWeaponType(w)
 	if tonumber(w) then 
 		weapontype = limit(tonumber(w), 12, 0)
 	else
-		weapontype = checkTable(weapons, w)
+		weapontype = findString(weapons, w)
 	end
 	if weapontype then
 		return weapontype
@@ -161,7 +94,7 @@ function getRarity(r)
 	if tonumber(r) then 
 		rarity = limit(tonumber(r), 5, -1)
 	else
-		rarity = checkTable(rarities, r)
+		rarity = findString(rarities, r)
 	end
 	if rarity then
 		return Rarity(rarity)
@@ -174,7 +107,7 @@ function getMaterial(m)
 	if tonumber(m) then 
 		material = limit(tonumber(m), 6, 0)
 	else
-		material = checkTable(materials, m)
+		material = findString(materials, m)
 	end
 	if material then
 		return Material(material)
@@ -183,23 +116,11 @@ function getMaterial(m)
 end
 -- Identifies script from a string. No, this time only from a string.
 function getScript(s)
-	local script = checkTable(scripts, s)
+	local script = findString(scripts, s)
 	if script then
 		return string.format("data/scripts/systems/%s.lua", script)
 	end
 	return nil, string.format("Could not identify upgradeScript: %s", s)
-end
-
--- Following two functions are used to seek in types tables.
--- Searches table for patterns.
-function checkTable(table, str)
-	for _,item in pairs(table) do
-		if item[1](str) then return item[2] end
-	end
-end
--- Limits range of a number.
-function limit(n, max, min)
-	return math.min(max, math.max(min, n))
 end
 
 -- Functions used directly by Avorion.
@@ -209,5 +130,5 @@ function getDescription()
 end
 -- This is printed when player use /help <command>.
 function getHelp()
-	return "Modifies inventory of a player. Usage:\n/inventory turret <type> [rarity] [material] [tech] [amount]\n/inventory upgrade <script> [rarity] [amount]\n/inventory available <turrets|upgrades|materials|rarities>"
+	return "Modifies inventory of a player. Usage:\n/inventory turret <type> [rarity] [material] [tech] [amount]\n/inventory upgrade <script> [rarity] [amount]"
 end
