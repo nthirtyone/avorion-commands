@@ -1,47 +1,30 @@
 if onServer() then
 
 function initialize()
-	player = Player()
-
-	-- Check if the player meets the requirements.
-	local hasConsent = true
+	local player = Player()
 	local x, y = Sector():getCoordinates()
-	local faction = Galaxy():getControllingFaction(x, y) or Galaxy():getLocalFaction(x, y) or Galaxy():getNearestFaction(x, y)
-	local factionHomeX, factionHomeY = faction:getHomeSectorCoordinates()
+	local hasConsent = false
 
-	if x ~= factionHomeX or y ~= factionHomeY then
-		if hasConsent then player:sendChatMessage("Server", 0, "You can only do that in a home sector.") end
-		hasConsent = false
-	end
-	if faction:getRelations(player.index) < 15000 then
-		if hasConsent then player:sendChatMessage("Server", 0, string.format("Your standing is too low with: %s", faction.name)) end
-		hasConsent = false
-	end
-
-	-- Now come exceptions:
-	for _, station in pairs({Sector():getEntitiesByType(EntityType.Station)}) do
+	-- Check stations if there is a friendly or own station.
+	for _,station in pairs({Sector():getEntitiesByType(EntityType.Station)}) do
 		if station.factionIndex == player.index then
-			player:sendChatMessage("Server", 0, "Your own station is here, which takes precedence.")
-			hasConsent = true
-			break
-		end
-		if station.title == "Resistance Outpost"%_t then
-			player:sendChatMessage("Server", 0, "But yes, the resistance will give you shelter.")
 			hasConsent = true
 			break
 		end
 		local stationOwner = Faction(station.factionIndex)
-		if stationOwner.isPlayer and stationOwner:getRelations(player.index) >= 15000 then
-			player:sendChatMessage("Server", 0, "Your friend's station is here, which heals that.")
+		-- "friendly" relation starts somewhere there
+		if stationOwner:getRelations(player.index) >= 5000 then
 			hasConsent = true
 			break
 		end
 	end
 
-	-- Do the actual work.
+	-- Change home sector
 	if hasConsent then
-		player:setHomeSectorCoordinates(Sector():getCoordinates())
-		player:sendChatMessage("Server", 0, "Home sector has been set to current sector.")
+		player:setHomeSectorCoordinates(x, y)
+		player:sendChatMessage("Server", 0, "Home sector has been set to the current sector.")
+	else
+		player:sendChatMessage("Server", 0, "There is no friendly or own station present in the current sector, can't change home sector.")
 	end
 	terminate()
 end
