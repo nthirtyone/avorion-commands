@@ -4,9 +4,9 @@ function execute(sender, commandName, ...)
 end
 
 function getDescription()
-    return "Sets players home in current sector."
+    return "Allows player to change home sector to current if friendly or own station is present."
 end
 
 function getHelp()
-    return "Sets players home in current sector. Usage: /sethome"
+    return "Allows player to change home sector to current if friendly or own station is present. Usage: /sethome"
 end
