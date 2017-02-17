@@ -19,5 +19,5 @@ Sets players home in current sector. Usage: `/sethome`
 
 ## /fighter
 Adds a fighter to the payers hanger. Usage:
-`/fighter add <type> [rarity] [material] [tech]`
-`/fighter available <turrets|materials|rarities>`
+`/fighter add <weapons> [rarity] [material] [tech]`
+`/fighter available <weapons|materials|rarities>`
