@@ -16,3 +16,8 @@ Modifies inventory of a player. Usage:
 Prints price of currently boarded ship. Usage: `/price`
 ## /sethome
 Sets players home in current sector. Usage: `/sethome`
+
+## /fighter
+Adds a fighter to the payers hanger. Usage:
+`/fighter add <type> [rarity] [material] [tech]`
+`/fighter available <turrets|materials|rarities>`
