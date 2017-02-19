@@ -8,11 +8,15 @@ Adds or removes crew to currently boarded ship. Usage:
 `/crew <fill|clear|add>`
 `/crew add <profession> [amount]`
 ## /inventory
+Alias: `/inv`
 Modifies inventory of a player. Usage:
 `/inventory turret <type> [rarity] [material] [tech] [amount]`
 `/inventory upgrade <script> [rarity] [amount]`
-`/inventory available <turrets|upgrades|materials|rarities>`
 ## /price
 Prints price of currently boarded ship. Usage: `/price`
 ## /sethome
-Sets players home in current sector. Usage: `/sethome`
+Allows player to change home sector to current if friendly or own station is present. Usage: `/sethome`
+## /whereis
+Gets the position of a player. Usage: `/whereis <name>`
+## /list
+Lists possible variables for `/inventory` or `/crew`. Usage: `/list [type]`. Use `/list` to print types.
