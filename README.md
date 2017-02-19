@@ -5,8 +5,10 @@ Currently package is open for any pull requests containing completely new comman
 Before modifying any existing command we highly recommend talking with anyone about it. Project currenlty lacks and kind of road map, development tips or overall design.
 ## /crew
 Adds or removes crew to currently boarded ship. Usage:
-`/crew <fill|clear|add>`
-`/crew add <profession> [amount]`
+`/crew help` or `/crew` for help
+`/crew add <profession> [rank] [level] [amount]`
+`/crew fill`
+`/crew clear`
 ## /inventory
 Alias: `/inv`
 Modifies inventory of a player. Usage:
@@ -19,4 +21,6 @@ Allows player to change home sector to current if friendly or own station is pre
 ## /whereis
 Gets the position of a player. Usage: `/whereis <name>`
 ## /list
-Lists possible variables for `/inventory` or `/crew`. Usage: `/list [type]`. Use `/list` to print types.
+Lists possible variables for `/inventory` or `/crew`. Usage: 
+`/list <type>`
+`/list help` or `/list` for help.

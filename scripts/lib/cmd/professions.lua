@@ -5,7 +5,7 @@ return
 	{function (str) return str:find("^[eE]ng") end,  1, "Engine"},
 	{function (str) return str:find("^[gG]un") end,  2, "Gunner"},
 	{function (str) return str:find("^[mM]in") end,  3, "Miner"},
-	{function (str) return str:find("^[rR]ep") end,  4, "Repair"},
+	{function (str) return str:find("^[mM]ec") or str:find("^[rR]ep") end,  4, "Mechanic (Repair)"},
 	{function (str) return str:find("^[pP]il") end,  5, "Pilot"},
 	{function (str) return str:find("^[sS]ec") end,  6, "Security"},
 	{function (str) return str:find("^[aA]tt") end,  7, "Attacker"},
