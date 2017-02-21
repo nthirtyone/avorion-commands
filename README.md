@@ -26,3 +26,17 @@ Lists possible variables for `/inventory` or `/crew`. Usage:
 `/list help` or `/list` for help.
 ## /disttocore
 Display the distance in sectors between the player and the center of the galaxy. Usage `/disttocore`
+## /agoods
+
+Adds goods to currently boarded ship. Usage:
+
+`/agoods <good name> <quantity>`
+
+Must capitalize all names
+Must replace spaces with _(underscore)
+Can not add more then your hold can handle
+
+### Examples:
+
+`/agood Steel 100`
+`/agood Steel_Tube 10`
