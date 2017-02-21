@@ -2,9 +2,7 @@ package.path = package.path .. ";data/scripts/lib/?.lua"
 
 require ("galaxy")
 require ("randomext")
-require ("tooltipmaker")
 require "cmd.common"
-FighterGenerator = require("fightergenerator")
 weapons = require "cmd.weapons"
 rarities = require "cmd.rarities"
 materials = require "cmd.materials"
