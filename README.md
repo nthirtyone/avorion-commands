@@ -24,3 +24,18 @@ Gets the position of a player. Usage: `/whereis <name>`
 Lists possible variables for `/inventory` or `/crew`. Usage: 
 `/list <type>`
 `/list help` or `/list` for help.
+
+## /agoods
+
+Adds goods to currently boarded ship. Usage:
+
+`/agoods <good name> <quantity>`
+
+Must capitalize all names
+Must replace spaces with _(underscore)
+Can not add more then your hold can handle
+
+### Examples:
+
+`/agood Steel 100`
+`/agood Steel_Tube 10`
