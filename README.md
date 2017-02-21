@@ -21,7 +21,7 @@ Allows player to change home sector to current if friendly or own station is pre
 ## /whereis
 Gets the position of a player. Usage: `/whereis <name>`
 ## /list
-Lists possible variables for `/inventory` or `/crew`. Usage: 
+Lists possible variables for `/inventory`, `/crew` or `/fighter`. Usage: `/list [type]`. Use `/list` to print types.
 `/list <type>`
 `/list help` or `/list` for help.
 
@@ -39,3 +39,7 @@ Can not add more then your hold can handle
 
 `/agood Steel 100`
 `/agood Steel_Tube 10`
+
+## /fighter
+Adds a fighter to the payers hanger. Usage:
+`/fighter add <weapons> [rarity] [material] [tech]`
