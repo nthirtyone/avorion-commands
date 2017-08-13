@@ -24,7 +24,8 @@ Gets the position of a player. Usage: `/whereis <name>`
 Lists possible variables for `/inventory`, `/crew` or `/fighter`. Usage: `/list [type]`. Use `/list` to print types.
 `/list <type>`
 `/list help` or `/list` for help.
-
+## /disttocore
+Display the distance in sectors between the player and the center of the galaxy. Usage `/disttocore`
 ## /agoods
 
 Adds goods to currently boarded ship. Usage:
