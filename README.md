@@ -3,9 +3,9 @@
 ### General note
 Avorion Commands Package is currently **not looking** for pull requests. I'm planning on reworking some of the most basic stuff in this package to make sure it works correctly in new version of game.
 ### New commands
-Currently package is open for any pull requests containing completely new commands that provides any useful functionality to the player or server administrator.
+~~Currently package is open for any pull requests containing completely new commands that provides any useful functionality to the player or server administrator.~~
 ### Modifying existing commands
-Before modifying any existing command we highly recommend talking with anyone about it. Project currenlty lacks and kind of road map, development tips or overall design.
+~~Before modifying any existing command we highly recommend talking with anyone about it. Project currenlty lacks and kind of road map, development tips or overall design.~~
 ## Commands
 ### /crew
 Adds or removes crew to currently boarded ship. Usage:
