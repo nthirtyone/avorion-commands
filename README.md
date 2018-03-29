@@ -1,7 +1,7 @@
 # Avorion Commands Package
 ## Contribution
 ### General note
-Avorion Commands Package is currently **not looking** for pull requests. I'm planning on reworking some of the most basic stuff in this package to make sure it works correctly in new version of game.
+~~Avorion Commands Package is currently **not looking** for pull requests. I'm planning on reworking some of the most basic stuff in this package to make sure it works correctly in new version of game.~~ Actually, go ahead and if you have something cool then send it PR or mail with diff/patch.
 ### New commands
 ~~Currently package is open for any pull requests containing completely new commands that provides any useful functionality to the player or server administrator.~~
 ### Modifying existing commands
