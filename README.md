@@ -1,11 +1,14 @@
 # Avorion Commands Package
-## Contribution
-### General note
-~~Avorion Commands Package is currently **not looking** for pull requests. I'm planning on reworking some of the most basic stuff in this package to make sure it works correctly in new version of game.~~ Actually, go ahead and if you have something cool then send it PR or mail with diff/patch.
-### New commands
-~~Currently package is open for any pull requests containing completely new commands that provides any useful functionality to the player or server administrator.~~
-### Modifying existing commands
-~~Before modifying any existing command we highly recommend talking with anyone about it. Project currenlty lacks and kind of road map, development tips or overall design.~~
+Pull Requests and/or patches are welcome.
+
+Personally, I don't plan to dedicate any time to this.  I will review
+and merge any changes from others.  Traffic and use seems very low.
+Forum thread is inactive since 2019.
+
+If any active Avorion player is willing to take over the repository,
+feel free to open an Issue or send me an e-mail.
+
+
 ## Commands
 ### /crew
 Adds or removes crew to currently boarded ship. Usage:
@@ -13,23 +16,32 @@ Adds or removes crew to currently boarded ship. Usage:
 `/crew add <profession> [rank] [level] [amount]`
 `/crew fill`
 `/crew clear`
+
 ### /inventory
 Alias: `/inv`
 Modifies inventory of a player. Usage:
 `/inventory turret <type> [rarity] [material] [tech] [amount]`
 `/inventory upgrade <script> [rarity] [amount]`
+
 ### /price
 Prints price of currently boarded ship. Usage: `/price`
+
 ### /sethome
-Allows player to change home sector to current if friendly or own station is present. Usage: `/sethome`
+Allows player to change home sector to current if friendly or own station
+is present. Usage: `/sethome`
+
 ### /whereis
 Gets the position of a player. Usage: `/whereis <name>`
+
 ### /list
-Lists possible variables for `/inventory`, `/crew` or `/fighter`. Usage: `/list [type]`. Use `/list` to print types.
-`/list <type>`
-`/list help` or `/list` for help.
+Lists possible variables for `/inventory`, `/crew` or `/fighter`. Usage:
+`/list [type]`. Use `/list` to print types.  `/list <type>` `/list help`
+or `/list` for help.
+
 ### /disttocore
-Display the distance in sectors between the player and the center of the galaxy. Usage `/disttocore`
+Display the distance in sectors between the player and the center of
+the galaxy. Usage `/disttocore`
+
 ### /agoods
 
 Adds goods to currently boarded ship. Usage:
